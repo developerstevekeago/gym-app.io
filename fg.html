@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteFit | Ultra-Modern Gym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --black: #121212;   
+            --glossy-black: #000000;
+            --gold: #D90429;
+            --neon-blue: #00F5FF;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--gold);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gold);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .hero-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 4, 41, 0.3);
+        }
+        
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .cta-button::after {
+            content: "";
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.4s;
+            background: var(--gold);
+        }
+        
+        .cta-button:hover::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 8rem 10%;
+            background: linear-gradient(to bottom, var(--black), var(--glossy-black));
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--light-gray);
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            top: -20px;
+            left: -20px;
+            z-index: -1;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 5%;
+            background-color: var(--glossy-black);
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        /* Store Section */
+        .store {
+            padding: 8rem 5%;
+            background: linear-gradient(to bottom, var(--glossy-black), var(--black));
+        }
+        
+        .store-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gold);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gold);
+            color: var(--white);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--dark-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .quick-view-btn {
+            display: block;
+            width: 100%;
+            padding: 0.7rem;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .quick-view-btn:hover {
+            background: var(--gold);
+        }
+        
+        /* Product Modal */
+        .product-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .product-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background: var(--dark-gray);
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--white);
+            cursor: pointer;
+            z-index: 1;
+        }
+        
+        .modal-image {
+            flex: 1;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal-details {
+            flex: 1;
+            padding: 3rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-price {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-description {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .size-selector h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sizes {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .size-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--white);
+            background: transparent;
+            color: var(--white);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-btn:hover, .size-btn.selected {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart:hover {
+            background: #b80322;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            background: var(--gold);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--glossy-black);
+            padding: 5rem 10% 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .modal-content {
+                flex-direction: column;
+                width: 90%;
+            }
+            
+            .modal-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.5rem;
+                color: var(--white);
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">ELITE<span>FIT</span></a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#store">Store</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <video autoplay muted loop class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-squats-with-a-barbell-40749-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Elevate Your Fitness</h1>
+            <p>Experience the ultimate training environment with state-of-the-art equipment, expert trainers, and a community that pushes you to be your best.</p>
+            <a href="#" class="cta-button">Join Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About EliteFit</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Premium Fitness Experience</h3>
+                <p>EliteFit was founded with one goal in mind: to provide an unparalleled fitness experience that combines cutting-edge equipment, expert coaching, and a motivating atmosphere.</p>
+                <p>Our 20,000 sq ft facility features the latest in strength and cardio equipment, dedicated functional training zones, recovery amenities, and luxurious locker rooms.</p>
+                <p>Whether you're a beginner or an elite athlete, our certified trainers will create a personalized program to help you reach your goals faster and safer.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80" alt="EliteFit Gym Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Our Facility</h2>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Weightlifting Area">
+                <div class="gallery-overlay">
+                    <h3>Strength Zone</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Cardio Area">
+                <div class="gallery-overlay">
+                    <h3>Cardio Deck</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Functional Training">
+                <div class="gallery-overlay">
+                    <h3>Functional Training</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Recovery Area">
+                <div class="gallery-overlay">
+                    <h3>Recovery Lounge</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Locker Room">
+                <div class="gallery-overlay">
+                    <h3>Luxury Locker Rooms</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Group Class">
+                <div class="gallery-overlay">
+                    <h3>Group Classes</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section class="store" id="store">
+        <h2 class="section-title">EliteFit Store</h2>
+        <div class="store-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="apparel">Apparel</button>
+            <button class="filter-btn" data-filter="supplements">Supplements</button>
+            <button class="filter-btn" data-filter="equipment">Equipment</button>
+        </div>
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-category="apparel">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1259&q=80" alt="Performance T-Shirt">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Apparel</span>
+                    <h3 class="product-title">EliteFit Performance Tee</h3>
+                    <div class="product-price">$39.99</div>
+                    <button class="quick-view-btn" data-product="1">Quick View</button>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card" data-category="apparel">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80" alt="Training Shorts">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Apparel</span>
+                    <h3 class="product-title">Flex Training Shorts</h3>
+                    <div class="product-price">$49.99</div>
+                    <button class="quick-view-btn" data-product="2">Quick View</button>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card" data-category="supplements">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Whey Protein">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Supplements</span>
+                    <h3 class="product-title">Elite Whey Protein</h3>
+                    <div class="product-price">$59.99</div>
+                    <button class="quick-view-btn" data-product="3">Quick View</button>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card" data-category="supplements">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Pre-Workout">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Supplements</span>
+                    <h3 class="product-title">Nitro Pre-Workout</h3>
+                    <div class="product-price">$44.99</div>
+                    <button class="quick-view-btn" data-product="4">Quick View</button>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card" data-category="equipment">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Jump Rope">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Equipment</span>
+                    <h3 class="product-title">Speed Jump Rope</h3>
+                    <div class="product-price">$24.99</div>
+                    <button class="quick-view-btn" data-product="5">Quick View</button>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card" data-category="equipment">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Resistance Bands">
+                </div>
+                <div class="product-info">
+                    <span class="product-category">Equipment</span>
+                    <h3 class="product-title">Resistance Band Set</h3>
+                    <div class="product-price">$34.99</div>
+                    <button class="quick-view-btn" data-product="6">Quick View</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modals -->
+    <!-- Modal 1 -->
+    <div class="product-modal" id="product-modal-1">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1259&q=80" alt="Performance T-Shirt">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">EliteFit Performance Tee</h2>
+                <div class="modal-price">$39.99</div>
+                <p class="modal-description">
+                    Our premium performance t-shirt is designed for maximum comfort and mobility during your toughest workouts. Made with moisture-wicking fabric that keeps you dry and cool, with reinforced stitching for durability.
+                </p>
+                <div class="size-selector">
+                    <h4>Size</h4>
+                    <div class="sizes">
+                        <button class="size-btn">S</button>
+                        <button class="size-btn selected">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                        <button class="size-btn">XXL</button>
+                    </div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 2 -->
+    <div class="product-modal" id="product-modal-2">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1136&q=80" alt="Training Shorts">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">Flex Training Shorts</h2>
+                <div class="modal-price">$49.99</div>
+                <p class="modal-description">
+                    Engineered for performance and comfort, these training shorts feature 4-way stretch fabric, a breathable mesh lining, and multiple pockets for your essentials. The ergonomic design allows for full range of motion in any workout.
+                </p>
+                <div class="size-selector">
+                    <h4>Size</h4>
+                    <div class="sizes">
+                        <button class="size-btn">S</button>
+                        <button class="size-btn selected">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                        <button class="size-btn">XXL</button>
+                    </div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 3 -->
+    <div class="product-modal" id="product-modal-3">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Whey Protein">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">Elite Whey Protein</h2>
+                <div class="modal-price">$59.99</div>
+                <p class="modal-description">
+                    25g of premium whey protein per serving to support muscle recovery and growth. Low in sugar and fat with added digestive enzymes for optimal absorption. Available in chocolate, vanilla, and strawberry flavors.
+                </p>
+                <div class="size-selector">
+                    <h4>Flavor</h4>
+                    <div class="sizes">
+                        <button class="size-btn selected">Chocolate</button>
+                        <button class="size-btn">Vanilla</button>
+                        <button class="size-btn">Strawberry</button>
+                    </div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 4 -->
+    <div class="product-modal" id="product-modal-4">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Pre-Workout">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">Nitro Pre-Workout</h2>
+                <div class="modal-price">$44.99</div>
+                <p class="modal-description">
+                    Scientifically formulated to enhance energy, focus, and endurance. Contains clinically effective doses of caffeine, beta-alanine, and citrulline malate. Experience explosive workouts with no crash.
+                </p>
+                <div class="size-selector">
+                    <h4>Flavor</h4>
+                    <div class="sizes">
+                        <button class="size-btn selected">Fruit Punch</button>
+                        <button class="size-btn">Blue Raspberry</button>
+                        <button class="size-btn">Watermelon</button>
+                    </div>
+                </div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 5 -->
+    <div class="product-modal" id="product-modal-5">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Jump Rope">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">Speed Jump Rope</h2>
+                <div class="modal-price">$24.99</div>
+                <p class="modal-description">
+                    Professional-grade speed rope with ball-bearing handles for smooth rotation. Adjustable cable length to fit your height. Perfect for cardio conditioning, boxing training, and improving coordination.
+                </p>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 6 -->
+    <div class="product-modal" id="product-modal-6">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Resistance Bands">
+            </div>
+            <div class="modal-details">
+                <h2 class="modal-title">Resistance Band Set</h2>
+                <div class="modal-price">$34.99</div>
+                <p class="modal-description">
+                    5-band set with varying resistance levels (light to heavy). Includes door anchor, ankle straps, and carrying bag. Perfect for home workouts, physical therapy, or adding resistance to bodyweight exercises.
+                </p>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="checkout-btn">Checkout Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>EliteFit</h3>
+                <p>Premium fitness experience with state-of-the-art facilities and expert coaching to help you achieve your goals.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#store">Store</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Fitness Ave, City</li>
+                    <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                    <li><i class="fas fa-envelope"></i> info@elitefit.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 5AM - 11PM</li>
+                    <li><i class="fas fa-clock"></i> Sat-Sun: 7AM - 9PM</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates on special offers and fitness tips.</p>
+                <form>
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 EliteFit. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Store Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                productCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Product Modals
+        const quickViewBtns = document.querySelectorAll('.quick-view-btn');
+        const productModals = document.querySelectorAll('.product-modal');
+        const closeModalBtns = document.querySelectorAll('.close-modal');
+        
+        quickViewBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const productId = btn.getAttribute('data-product');
+                document.getElementById(`product-modal-${productId}`).classList.add('active');
+            });
+        });
+        
+        closeModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                productModals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+            });
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('product-modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+        
+        // Size Selection
+        const sizeBtns = document.querySelectorAll('.size-btn');
+        
+        sizeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove selected class from all buttons in this group
+                btn.parentNode.querySelectorAll('.size-btn').forEach(b => {
+                    b.classList.remove('selected');
+                });
+                // Add selected class to clicked button
+                btn.classList.add('selected');
+            });
+        });
+        
+        // Simple Cart Functionality
+        const cartCount = document.querySelector('.cart-count');
+        let cartItems = 0;
+        
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                cartItems++;
+                cartCount.textContent = cartItems;
+                
+                // Show confirmation
+                alert('Item added to cart!');
+                
+                // Close modal
+                btn.closest('.product-modal').classList.remove('active');
+            });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll Animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-content, .gallery-item, .product-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.about-content, .gallery-item, .product-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
